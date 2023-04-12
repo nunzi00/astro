@@ -77,15 +77,13 @@ return {
     --   },
     -- }
   end,
-  plugins = {
-    {
-      "L3MON4D3/LuaSnip",
-      config = function(plugin, opts)
-        require "plugins.configs.luasnip" (plugin, opts) -- include the default astronvim config that calls the setup call
-        require("luasnip.loaders.from_{vscode,lua,snipmate}").lazy_load {
-          paths = { "./lua/user/luasnippets", "./lua/user/snippets" },
-        } -- load snippets paths
-      end,
-    },
-  },
+  -- plugins = {
+  --   {
+  --     "L3MON4D3/LuaSnip",
+  --     config = function(plugin, opts)
+  --       require "plugins.configs.luasnip" (plugin, opts)                  -- include the default astronvim config that calls the setup call
+  --       require("luasnip.loaders.from_{vscode,lua,snipmate}").lazy_load() -- load snippets paths
+  --     end,
+  --   },
+  -- },
 }
