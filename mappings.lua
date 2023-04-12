@@ -30,6 +30,15 @@ return {
       function() require("astronvim.utils.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Move buffer tab right",
     },
+    ["<leader>v"] = {
+      function()
+        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+          vim.cmd.vsplit()
+          vim.api.nvim_win_set_buf(0, bufnr)
+        end)
+      end,
+      desc = "Vertical split buffer from tabline",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
