@@ -1,0 +1,13 @@
+{
+    "fclass": {
+        "prefix": "fclass",
+        "body": [
+            "class ${1:ClassName} ${2:extends ${3:AnotherClass}} ${4:implements ${5:Interface}}",
+            "{",
+            "\t$0",
+            "}",
+            ""
+        ],
+        "description": "Final class"
+    }
+}
