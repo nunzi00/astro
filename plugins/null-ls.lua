@@ -10,6 +10,7 @@ return {
     config.sources = {
       null_ls.builtins.diagnostics.twigcs,
       null_ls.builtins.diagnostics.phpstan.with {
+        condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
         command = "./vendor/bin/phpstan",
       },
       null_ls.builtins.diagnostics.yamllint.with {
@@ -38,6 +39,7 @@ return {
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.shfmt,
+      -- null_ls.builtins.completion.luasnip,
     }
     -- Set a formatter
     -- null_ls.builtins.formatting.stylua,
