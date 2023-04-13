@@ -36,6 +36,7 @@ return {
       null_ls.builtins.formatting.black.with { extra_args = { "--fast" } },
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.yamlfmt,
+      null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.shfmt,
