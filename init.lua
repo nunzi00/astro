@@ -32,8 +32,10 @@ return {
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+        ignore_filetypes = {
+          "yaml.docker-compose",
+          "dockercompose",
+          "yaml",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -65,17 +67,17 @@ return {
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
+    vim.filetype.add {
+      --   extension = {
+      --     foo = "fooscript",
+      --   },
+      filename = {
+        ["docker-compose"] = "dockercompose",
+      },
+      -- pattern = {
+      -- [".config/foo/.*"] = "fooscript",
+      -- },
+    }
   end,
   -- plugins = {
   --   {
