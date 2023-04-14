@@ -40,7 +40,7 @@ return {
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.shfmt,
-      -- null_ls.builtins.completion.luasnip,
+      null_ls.builtins.completion.luasnip,
     }
     -- Set a formatter
     -- null_ls.builtins.formatting.stylua,

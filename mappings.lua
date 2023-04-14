@@ -40,12 +40,21 @@ return {
       desc = "Vertical split buffer from tabline",
     },
     ["<C-/>"] = {
-      function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
+      function()
+        require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
+        vim.cmd "norm! j"
+      end,
       desc = "Comment",
     },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+  },
+  v = {
+    ["<C-/>"] = {
+      "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+      desc = "Toggle comment line",
+    },
   },
 }
