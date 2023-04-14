@@ -30,9 +30,34 @@ return {
   --     require "plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
   --     -- add more custom luasnip configuration such as filetype extend or custom snippets
   --     local luasnip = require "luasnip"
-  --     luasnip.filetype_extend("javascript", { "javascriptreact" })
+  -- luasnip.filetype_extend("javascript", { "javascriptreact" })
   --   end,
   -- },
+  {
+    "mfussenegger/nvim-dap",
+    config = function(plugin, opts)
+      require "plugins.configs.mason-nvim-dap"(plugin, opts) -- include the default astronvim config that calls the setup call
+      -- add more custom luasnip configuration such as filetype extend or custom snippets
+      local dap = require "dap"
+      dap.adapters.php = {
+        type = "executable",
+        command = "node",
+        args = { os.getenv "HOME" .. "/.local/share/vscode-php-debug/out/phpDebug.js" },
+      }
+      dap.configurations.php = {
+        {
+          type = "php",
+          request = "launch",
+          name = "Monorepo",
+          pathMappings = {
+            ["/app"] = "${workspaceFolder}",
+          },
+          port = 9003,
+        },
+      }
+      dap.adapters.php = function(callback, config) callback { type = "server", host = "127.0.0.1", port = 9003 } end
+    end,
+  },
   -- {
   --   "windwp/nvim-autopairs",
   --   config = function(plugin, opts)
@@ -78,7 +103,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
-      require "plugins.configs.luasnip" (plugin, opts) -- include the default astronvim config that calls the setup call
+      require "plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       require("luasnip.loaders.from_lua").lazy_load {
         paths = {
           "./lua/user/luasnippets",
