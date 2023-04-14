@@ -68,9 +68,9 @@ return {
   polish = function()
     -- Set up custom filetypes
     vim.filetype.add {
-      --   extension = {
-      --     foo = "fooscript",
-      --   },
+      extension = {
+        neon = "yaml",
+      },
       filename = {
         ["docker-compose"] = "dockercompose",
       },
