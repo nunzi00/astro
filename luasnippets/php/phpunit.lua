@@ -1,52 +1,58 @@
--- local placeholderMap = { i(1, "expected"), i(2, "actual") }
--- local singlePlaceholderMap = { i(1, "actual") }
+local ls = require "luasnip"
+local s = ls.snippet
+local sn = ls.snippet_node
+local isn = ls.indent_snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+local events = require "luasnip.util.events"
+local ai = require "luasnip.nodes.absolute_indexer"
+local fmt = require("luasnip.extras.fmt").fmt
+local postfix = require("luasnip.extras.postfix").postfix
 
-local function snakeize(args, parent)
-  return string.lower(string.gsub(args[1][1], "%u", "_%1"))
+local function snakeize(args) return string.lower(string.gsub(args[1][1], "%u", "_%1")) end
+local namefile = function()
+  return f(function(_args, snip)
+    local name = vim.split(snip.snippet.env.TM_FILENAME, ".", true)
+    return name[1] or ""
+  end)
 end
 
 return {
   s(
-    { trig = "ppt", dscr = "Generic boilerplate for simple Php Unit Test" },
-    fmta(
-      [[
-        /** @test */
-        public function <>(): void
-        {
-            <>
-        }
-      ]],
-      { i(1, "test name"), i(0) }
-    )
-  ),
-  s(
     { trig = "__te", dscr = "Generic boilerplate for simple Php Unit Test" },
-    fmta(
+    fmt(
       [[
         /**
          * @test
-         * <>
-         * @group 
+         * {}
+         * @group {}
          */
-        public function <>(): void
-        {
-            <>
-        }
+        public function {}(): void
+        {{
+            {}
+        }}
       ]],
-      { f(snakeize, {1}), i(1, "testName"), i(0) }
+      {
+        f(snakeize, { 1 }),
+        namefile(),
+        i(1, "testName"),
+        i(0),
+      }
     )
   ),
-  s({ trig = "asco"}, fmt("$this->assertCount({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "asi"}, fmt("$this->assertInstanceOf({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "ashk"}, fmt("$this->assertArrayHasKey({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "ase"}, fmt("$this->assertEquals({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "asne"}, fmt("$this->assertNotEquals({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "ass"}, fmt("$this->assertSame({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "asns"}, fmt("$this->assertNotSame({}, {})", { i(1, "expected"), i(2, "actual") })),
-  s({ trig = "asf"}, fmt("$this->assertFalse({})", { i(1, "actual")})),
-  s({ trig = "ast"}, fmt("$this->assertTrue({})", { i(1, "actual") })),
-
-
+  -- s({ trig = "asco"}, fmt("$this->assertCount({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "asi"}, fmt("$this->assertInstanceOf({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "ashk"}, fmt("$this->assertArrayHasKey({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "ase"}, fmt("$this->assertEquals({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "asne"}, fmt("$this->assertNotEquals({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "ass"}, fmt("$this->assertSame({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "asns"}, fmt("$this->assertNotSame({}, {})", { i(1, "expected"), i(2, "actual") })),
+  -- s({ trig = "asf"}, fmt("$this->assertFalse({})", { i(1, "actual")})),
+  -- s({ trig = "ast"}, fmt("$this->assertTrue({})", { i(1, "actual") })),
 
   -- s({ trig = "ase"}, fmt("$this->assertEquals({}, {})", placeholderMap)),
   -- s({ trig = "asne"}, fmt("$this->assertNotEquals({}, {})", placeholderMap)),
