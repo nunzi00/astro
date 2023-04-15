@@ -13,6 +13,10 @@ return {
         condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
         command = "./vendor/bin/phpstan",
       },
+      -- null_ls.builtins.diagnostics.phpstan.with {
+      --   condition = function(utils) return utils.root_has_file "backend/vendor/bin/phpstan" end,
+      --   command = "backend/vendor/bin/phpstan",
+      -- },
       null_ls.builtins.diagnostics.yamllint.with {
         extra_args = { "-d { extends: default, rules: {line-length: {max: 120}}}" },
       },
@@ -40,7 +44,7 @@ return {
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.shfmt,
-      null_ls.builtins.completion.luasnip,
+      -- null_ls.builtins.completion.luasnip,
     }
     -- Set a formatter
     -- null_ls.builtins.formatting.stylua,

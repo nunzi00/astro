@@ -48,9 +48,18 @@ return {
         {
           type = "php",
           request = "launch",
-          name = "Monorepo",
+          name = "Monorepo backend",
           pathMappings = {
             ["/app"] = "${workspaceFolder}",
+          },
+          port = 9003,
+        },
+        {
+          type = "php",
+          request = "launch",
+          name = "Monorepo raiz",
+          pathMappings = {
+            ["/app"] = "${workspaceFolder}/backend",
           },
           port = 9003,
         },
@@ -109,6 +118,7 @@ return {
           "./lua/user/luasnippets",
         },
       } -- load snippets paths
+      require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
   -- require("luasnip.loaders.from_{vscode,lua}").lazy_load { paths = { "./lua/user/snippets" } } ,
