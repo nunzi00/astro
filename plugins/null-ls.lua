@@ -3,6 +3,7 @@ return {
   opts = function(_, config)
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
+    config.debug = true
 
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -10,25 +11,40 @@ return {
     config.sources = {
       null_ls.builtins.diagnostics.twigcs,
       null_ls.builtins.diagnostics.phpstan.with {
-        condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
-        command = "./vendor/bin/phpstan",
+        -- condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
+        command = "/home/lucas/getlife/backend/vendor/bin/phpstan",
+        args = {
+          "--configuration=/home/lucas/getlife/backend/phpstan.neon",
+          "analyze",
+          "--error-format",
+          "json",
+          "--no-progress",
+          "$FILENAME",
+        },
       },
-      -- null_ls.builtins.diagnostics.phpstan.with {
-      --   condition = function(utils) return utils.root_has_file "backend/vendor/bin/phpstan" end,
-      --   command = "backend/vendor/bin/phpstan",
-      -- },
       null_ls.builtins.diagnostics.yamllint.with {
         extra_args = { "-d { extends: default, rules: {line-length: {max: 120}}}" },
       },
-      null_ls.builtins.diagnostics.psalm.with {
-        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-        extra_args = { "--config=.psalm-nvim.xml" },
-        condition = function(utils) return utils.root_has_file "psalm-nvim.xml" end,
-        timeout = 20000,
-        command = "./vendor/bin/psalm",
-      },
       null_ls.builtins.diagnostics.phpcs.with {
-        extra_args = { "--standard=PSR12" },
+        command = "./vendor/bin/phpcs",
+        args = {
+          -- THE CUSTOM STANDARD
+          "--standard=/home/lucas/getlife/backend/phpcs.xml.dist",
+          "--report=json",
+          -- silence status messages during processing as they are invalid JSON
+          "-q",
+          -- always report codes
+          "-s",
+          -- phpcs exits with a non-0 exit code when messages are reported but we only want to know if the command fails
+          "--runtime-set",
+          "ignore_warnings_on_exit",
+          "1",
+          "--runtime-set",
+          "ignore_errors_on_exit",
+          "1",
+          -- process stdin
+          "-",
+        },
       },
       null_ls.builtins.code_actions.eslint,
       null_ls.builtins.formatting.json_tool,
