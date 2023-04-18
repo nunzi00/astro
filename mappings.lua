@@ -46,24 +46,16 @@ return {
       end,
       desc = "Comment",
     },
-    --     -- Phpactor
-    --     {"<leader>cc" = {
-    --       function()
-    --         ":call phpactor#ClassNew()<CR>", opts) -- Generate a new class (replacing the current file)
-    -- "<leader>u", ":call phpactor#UseAdd()<CR>", opts) -- Include use statement
-    -- "<leader>mm", ":call phpactor#ContextMenu()<CR>", opts) -- Invoke the context menu
-    -- "<leader>nn", ":call phpactor#Navigate()<CR>", opts) -- Invoke the navigation menu
-    -- "<leader>o", ":call phpactor#GotoDefinition()<CR>", opts) -- Goto definition of class or class member under the cursor
-    -- "<leader>ov", "<cmd>PhpactorGotoDefinition vsplit<CR>", opts) -- Goto definition in vertical split
-    -- "<leader>oh", "<cmd>PhpactorGotoDefinition split<CR>", opts) -- Goto definition in horizontal split
-    -- "<leader>ff", ":call phpactor#FindReferences()<CR>", opts) -- Extract expression (normal mode)
-    -- "<leader>im", ":call phpactor#GotoImplementations()<CR>", opts)
-    -- -- keymap("n", "<leader>k", ":call phpactor#Hover()<CR>", opts) -- Show brief information about the symbol under the cursor
-    -- "<leader>tt", ":call phpactor#Transform()<CR>", opts) -- Transform the classes in the current file
-    -- "<leader>ee", ":call phpactor#ExtractExpression()<CR>", opts) -- Extract expression (normal mode)
-    -- keymap("v", "<leader>ee", ":call phpactor#ExtractExpression(v:true)<CR>", opts) -- Extract expression (visual mode)
-    -- keymap("v", "<leader>em", ":call <C-u>PhpactorExtractMethod<CR>", opts) -- Extract method (visual mode)
-    -- keymap("v", "<leader>ec", ":call <C-u>PhpactorExtractConstant<CR>", opts) -- Extract method (visual mode)
+    ["<leader>te"] = {
+
+      function()
+        local file = vim.fn.expand "%"
+        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/phpunit %s'", file)
+        vim.notify(command)
+        vim.cmd(command)
+      end,
+      desc = "PhpUnit",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
