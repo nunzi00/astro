@@ -4,6 +4,7 @@ return {
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
     config.debug = true
+    print(null_ls)
 
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting

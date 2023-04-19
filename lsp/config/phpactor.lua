@@ -1,0 +1,23 @@
+-- return {
+-- function()
+-- local config = require "lspconfig"
+-- config = {
+-- phpstan = {
+-- enabled = true,
+-- level = 1,
+-- },
+-- }
+-- end,
+-- }
+-- local lspconfig = require "lspconfig"
+-- local configs = require "lspconfig.configs"
+-- configs.intelephense.setup {
+-- default_config = {
+-- cmd = { "intelephense", "--stdio", "-vvv" },
+-- filetypes = { "php" },
+-- root_dir = function(fname) return vim.loop.cwd() end,
+-- settings = {
+-- intelephense = {},
+-- },
+-- },
+-- }

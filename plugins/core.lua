@@ -118,7 +118,7 @@ return {
           "./lua/user/luasnippets",
         },
       } -- load snippets paths
-      require("luasnip.loaders.from_vscode").lazy_load()
+      -- require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
   -- require("luasnip.loaders.from_{vscode,lua}").lazy_load { paths = { "./lua/user/snippets" } } ,
