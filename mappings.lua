@@ -56,6 +56,16 @@ return {
       end,
       desc = "PhpUnit",
     },
+    ["<leader>ps"] = {
+
+      function()
+        local file = vim.fn.expand "%"
+        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/psalm -c psalm-local.xml %s'", file)
+        vim.notify(command)
+        vim.cmd(command)
+      end,
+      desc = "Psalm",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
