@@ -4,7 +4,6 @@ return {
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
     config.debug = true
-    print(null_ls)
 
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -30,7 +29,7 @@ return {
         command = "./vendor/bin/phpcs",
         args = {
           -- THE CUSTOM STANDARD
-          "--standard=/home/lucas/getlife/backend/phpcs.xml.dist",
+          "--standard=PSR12",
           "--report=json",
           -- silence status messages during processing as they are invalid JSON
           "-q",

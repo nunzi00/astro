@@ -56,6 +56,16 @@ return {
       end,
       desc = "PhpUnit",
     },
+    ["<leader>ta"] = {
+
+      function()
+        local file = vim.fn.expand "%"
+        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/phpunit'", file)
+        vim.notify(command)
+        vim.cmd(command)
+      end,
+      desc = "All test PhpUnit",
+    },
     ["<leader>ps"] = {
 
       function()
@@ -65,6 +75,16 @@ return {
         vim.cmd(command)
       end,
       desc = "Psalm",
+    },
+    ["<leader>psa"] = {
+
+      function()
+        local file = vim.fn.expand "%"
+        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/psalm -c psalm-local.xml'", file)
+        vim.notify(command)
+        vim.cmd(command)
+      end,
+      desc = "Full Psalm",
     },
   },
   t = {
