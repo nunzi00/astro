@@ -1,4 +1,8 @@
 return {
+  {
+    "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
+  },
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
