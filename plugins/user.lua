@@ -1,16 +1,12 @@
 return {
-  {
-    "vuki656/package-info.nvim",
-    requires = "MunifTanjim/nui.nvim",
-  },
+  "Psykopear/neovim-package-info",
+
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
   -- {
   --   "ray-x/lsp_signature.nvim",
   --   event = "BufRead",
-  --   config = function()
-  --     require("lsp_signature").setup()
-  --   end,
+  --   config = function() require("lsp_signature").setup() end,
   -- },
 }
