@@ -49,7 +49,7 @@ return {
     ["<leader>te"] = {
 
       function()
-        local file = vim.fn.expand "%"
+        local file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
         local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/phpunit %s'", file)
         vim.notify(command)
         vim.cmd(command)
