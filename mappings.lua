@@ -50,7 +50,7 @@ return {
 
       function()
         local file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
-        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/phpunit %s'", file)
+        local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit %s'", file)
         vim.notify(command)
         vim.cmd(command)
       end,
@@ -60,7 +60,7 @@ return {
 
       function()
         local file = vim.fn.expand "%"
-        local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/phpunit'", file)
+        local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit'", file)
         vim.notify(command)
         vim.cmd(command)
       end,
