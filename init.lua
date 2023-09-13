@@ -17,7 +17,8 @@ return {
     },
   },
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  -- colorscheme = "astrodark",
+  colorscheme = "sonokai",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -39,6 +40,9 @@ return {
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
+        "yaml.docker-compose",
+        "dockercompose",
+        "yaml",
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
@@ -66,7 +70,7 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    vim.lsp.set_log_level "debug"
+    -- vim.lsp.set_log_level "debug"
 
     -- Set up custom filetypes
     vim.filetype.add {
@@ -75,6 +79,7 @@ return {
       },
       filename = {
         ["docker-compose"] = "dockercompose",
+        ["Jenkinsfile"] = "groovy",
       },
       -- pattern = {
       -- [".config/foo/.*"] = "fooscript",
@@ -91,7 +96,7 @@ return {
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.json" },
     { import = "astrocommunity.pack.bash" },
-    { import = "astrocommunity.pack.astro" },
+    -- { import = "astrocommunity.pack.astro" },
     { import = "astrocommunity.git.git-blame-nvim" },
   },
 }

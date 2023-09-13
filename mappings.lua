@@ -86,6 +86,10 @@ return {
       end,
       desc = "Full Psalm",
     },
+    ["<leader>rr"] = {
+      function() require("refactoring").select_refactor() end,
+      desc = "Refactor Menu",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -95,6 +99,10 @@ return {
     ["<C-/>"] = {
       "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
       desc = "Toggle comment line",
+    },
+    ["<leader>rr"] = {
+      function() require("refactoring").select_refactor() end,
+      desc = "Refactor Menu",
     },
   },
 }

@@ -5,17 +5,14 @@ return {
     opts = function(_, opts)
       -- customize the dashboard header
       opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
+        "                                         ",
+        "██╗░░░░░██╗░░░██╗░█████╗░░█████╗░░██████╗",
+        "██║░░░░░██║░░░██║██╔══██╗██╔══██╗██╔════╝",
+        "██║░░░░░██║░░░██║██║░░╚═╝███████║╚█████╗░",
+        "██║░░░░░██║░░░██║██║░░██╗██╔══██║░╚═══██╗",
+        "███████╗╚██████╔╝╚█████╔╝██║░░██║██████╔╝",
+        "╚══════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝╚═════╝░",
+        "                                         ",
       }
       return opts
     end,
@@ -36,7 +33,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     config = function(plugin, opts)
-      require "plugins.configs.mason-nvim-dap" (plugin, opts) -- include the default astronvim config that calls the setup call
+      require "plugins.configs.mason-nvim-dap"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local dap = require "dap"
       dap.adapters.php = {
@@ -54,17 +51,8 @@ return {
           },
           port = 9003,
         },
-        -- {
-        --   type = "php",
-        --   request = "launch",
-        --   name = "Monorepo raiz",
-        --   pathMappings = {
-        --     ["/app"] = "${workspaceFolder}/backend",
-        --   },
-        --   port = 9003,
-        -- },
       }
-      dap.adapters.php = function(callback, config) callback { type = "server", host = "127.0.0.1", port = 9003 } end
+      dap.adapters.php = function(callback, config) callback { type = "server", host = "localhost", port = 9003 } end
     end,
   },
   -- {
@@ -112,7 +100,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
-      require "plugins.configs.luasnip" (plugin, opts) -- include the default astronvim config that calls the setup call
+      require "plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       require("luasnip.loaders.from_lua").lazy_load {
         paths = {
           "./lua/user/luasnippets",
@@ -120,6 +108,20 @@ return {
       } -- load snippets paths
       -- require("luasnip.loaders.from_vscode").lazy_load()
     end,
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function() require("refactoring").setup() end,
+  },
+  {
+    "nvim-lua/plenary.nvim",
+  },
+  {
+    "sainnhe/sonokai",
   },
   -- require("luasnip.loaders.from_{vscode,lua}").lazy_load { paths = { "./lua/user/snippets" } } ,
   -- require("luasnip.loaders.from_lua").lazy_load { paths = { "./lua/user/luasnippets" } },
