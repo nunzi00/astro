@@ -123,6 +123,23 @@ return {
   {
     "sainnhe/sonokai",
   },
+  { "nvim-treesitter/nvim-treesitter-refactor" },
+  { "phpactor/phpactor" },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function() require("lsp_signature").setup() end,
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+  { "Psykopear/neovim-package-info" },
+
+  -- You can also add new plugins here as well:
+  -- Add plugins, the lazy syntax
+  { "andweeb/presence.nvim" },
   -- require("luasnip.loaders.from_{vscode,lua}").lazy_load { paths = { "./lua/user/snippets" } } ,
   -- require("luasnip.loaders.from_lua").lazy_load { paths = { "./lua/user/luasnippets" } },
 }

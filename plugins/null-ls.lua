@@ -10,22 +10,23 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     config.sources = {
       null_ls.builtins.diagnostics.twigcs,
-      null_ls.builtins.diagnostics.phpstan.with {
-        -- condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
-        command = "/home/lucas/getlife/backend/vendor/bin/phpstan",
-        args = {
-          "--configuration=/home/lucas/getlife/backend/phpstan.neon",
-          "analyze",
-          "--error-format",
-          "json",
-          "--no-progress",
-          "$FILENAME",
-        },
-      },
+      -- null_ls.builtins.diagnostics.phpstan.with {
+      --   condition = function(utils) return utils.root_has_file "vendor/bin/phpstan" end,
+      --   command = "/home/lucas/getlife/backend/vendor/bin/phpstan",
+      --   args = {
+      --     "--configuration=/home/lucas/getlife/backend/phpstan.neon",
+      --     "analyze",
+      --     "--error-format",
+      --     "json",
+      --     "--no-progress",
+      --     "$FILENAME",
+      --   },
+      -- },
       null_ls.builtins.diagnostics.yamllint.with {
         extra_args = { "-d { extends: default, rules: {line-length: {max: 120}}}" },
       },
       null_ls.builtins.diagnostics.phpcs.with {
+        condition = function(utils) return utils.root_has_file "vendor/bin/phpcs" end,
         command = "./vendor/bin/phpcs",
         args = {
           -- THE CUSTOM STANDARD
@@ -58,7 +59,7 @@ return {
       null_ls.builtins.formatting.yamlfmt,
       null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
-      null_ls.builtins.formatting.phpcsfixer,
+      null_ls.builtins.formatting.phpcsfixer.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.shfmt,
       -- null_ls.builtins.completion.luasnip,
     }

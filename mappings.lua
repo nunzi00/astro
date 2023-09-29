@@ -61,8 +61,7 @@ return {
       function()
         local file = vim.fn.expand "%"
         local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit'", file)
-        vim.notify(command)
-        vim.cmd(command)
+        vim.vim.cmd(command)
       end,
       desc = "All test PhpUnit",
     },
@@ -86,9 +85,10 @@ return {
       end,
       desc = "Full Psalm",
     },
-    ["<leader>rr"] = {
-      function() require("refactoring").select_refactor() end,
-      desc = "Refactor Menu",
+    ["<leader>ca"] = {
+      function() vim.lsp.buf.code_action { apply = true } end,
+
+      desc = "LSP Code Actions",
     },
   },
   t = {
