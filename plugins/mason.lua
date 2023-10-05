@@ -26,14 +26,14 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "luacheck", "phpcs", "ts-standard", "prettierd", "stylua", "phpcbf", "shfmt", "ts-standard" },
-      ensure_installed = { "luacheck", "ts-standard", "prettierd", "stylua", "shfmt", "ts-standard" },
+      ensure_installed = { "luacheck", "ts-standard", "prettierd", "stylua", "shfmt", "ts-standard", "php-cs-fixer"},
     },
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
-      ensure_installed = { "php-debug-adapter" },
+      ensure_installed = { "php-debug-adapter", "php" },
     },
   },
 }
