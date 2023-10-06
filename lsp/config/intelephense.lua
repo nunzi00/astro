@@ -1,11 +1,11 @@
 local lspconfig = require "lspconfig"
 local configs = require "lspconfig.configs"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 configs.intelephense.setup {
   default_config = {
     enabled = false,
-    cmd = { "intelephense", "--stdio" },
+    -- cmd = { "intelephense", "--stdio" },
     filetypes = { "php" },
     root_dir = function(fname) return vim.loop.cwd() end,
     settings = {

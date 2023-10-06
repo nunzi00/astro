@@ -90,6 +90,12 @@ return {
 
       desc = "LSP Code Actions",
     },
+    ["gr"] = {
+      function()
+        require("telescope.builtin").lsp_references { file_ignore_patterns = { "%Test.php", "%DebugContainer.php" } }
+      end,
+      desc = "LSP References",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
