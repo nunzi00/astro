@@ -17,5 +17,21 @@ return {
       "typescript",
       "yaml",
     },
+    highlight = { enable = true },
+    indent = { enable = true },
+    autotag = {
+      enable = true,
+      filetypes = {
+        "html",
+        "javascript",
+        "javascriptreact",
+        "svelte",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "xml",
+        "php",
+      },
+    },
   },
 }

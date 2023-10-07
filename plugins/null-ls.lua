@@ -25,28 +25,28 @@ return {
       null_ls.builtins.diagnostics.yamllint.with {
         extra_args = { "-d { extends: default, rules: {line-length: {max: 120}}}" },
       },
-      null_ls.builtins.diagnostics.phpcs.with {
-        condition = function(utils) return utils.root_has_file "vendor/bin/phpcs" end,
-        command = "./vendor/bin/phpcs",
-        args = {
-          -- THE CUSTOM STANDARD
-          "--standard=PSR12",
-          "--report=json",
-          -- silence status messages during processing as they are invalid JSON
-          "-q",
-          -- always report codes
-          "-s",
-          -- phpcs exits with a non-0 exit code when messages are reported but we only want to know if the command fails
-          "--runtime-set",
-          "ignore_warnings_on_exit",
-          "1",
-          "--runtime-set",
-          "ignore_errors_on_exit",
-          "1",
-          -- process stdin
-          "-",
-        },
-      },
+      -- null_ls.builtins.diagnostics.phpcs.with {
+      --   condition = function(utils) return utils.root_has_file "vendor/bin/phpcs" end,
+      --   command = "./vendor/bin/phpcs",
+      --   args = {
+      --     -- THE CUSTOM STANDARD
+      --     "--standard=PSR12",
+      --     "--report=json",
+      --     -- silence status messages during processing as they are invalid JSON
+      --     "-q",
+      --     -- always report codes
+      --     "-s",
+      --     -- phpcs exits with a non-0 exit code when messages are reported but we only want to know if the command fails
+      --     "--runtime-set",
+      --     "ignore_warnings_on_exit",
+      --     "1",
+      --     "--runtime-set",
+      --     "ignore_errors_on_exit",
+      --     "1",
+      --     -- process stdin
+      --     "-",
+      --   },
+      -- },
       null_ls.builtins.code_actions.eslint,
       null_ls.builtins.formatting.json_tool,
       null_ls.builtins.diagnostics.eslint,
@@ -61,6 +61,7 @@ return {
       null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.phpcsfixer.with { extra_args = { "--standard=PSR12" } },
       null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.black,
       -- null_ls.builtins.completion.luasnip,
     }
     -- Set a formatter
