@@ -4,7 +4,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs.phpactor.setup {
   default_config = {
-
     cmd = {
       "phpactor",
       "language-server",
@@ -18,4 +17,3 @@ configs.phpactor.setup {
     },
   },
 }
-lspconfig.intelephense.setup { capabilities = capabilities }
