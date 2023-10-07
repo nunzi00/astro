@@ -58,10 +58,21 @@ return {
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.yamlfmt,
       null_ls.builtins.formatting.prettierd,
-      null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" } },
-      null_ls.builtins.formatting.phpcsfixer.with { extra_args = { "--standard=PSR12" } },
+      null_ls.builtins.formatting.phpcbf.with { extra_args = { "--standard=PSR12" }, prefer_local = "vendor/bin" },
+      null_ls.builtins.formatting.phpcsfixer.with {
+        extra_args = { "--standard=PSR12" },
+        diagnostics_format = "#{m} (#{c}) [#{s}]",
+        only_local = "vendor/bin",
+      },
       null_ls.builtins.formatting.shfmt,
       null_ls.builtins.formatting.black,
+      null_ls.builtins.diagnostics.eslint_d.with {
+        condition = function(utils) return utils.root_has_file { ".eslintrc.js", ".eslintrc.json" } end,
+      },
+      null_ls.builtins.formatting.markdownlint,
+      null_ls.builtins.diagnostics.markdownlint.with {
+        extra_args = { "--disable", "line-length" },
+      },
       -- null_ls.builtins.completion.luasnip,
     }
     -- Set a formatter
