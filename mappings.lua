@@ -46,15 +46,15 @@ return {
       end,
       desc = "Comment",
     },
-    ["<leader>te"] = {
-      function()
-        local file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
-        local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit %s'", file)
-        -- vim.notify(command)
-        vim.cmd(command)
-      end,
-      desc = "PhpUnit",
-    },
+    -- ["<leader>te"] = {
+    -- function()
+    -- local file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
+    -- local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit %s'", file)
+    -- vim.notify(command)
+    -- vim.cmd(command)
+    -- end,
+    -- desc = "PhpUnit",
+    -- },
     ["<leader>ta"] = {
       function() vim.cmd "!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit'" end,
       desc = "All test PhpUnit",
@@ -84,6 +84,10 @@ return {
       desc = "LSP Code Actions",
     },
     ["<leader>tr"] = { "<cmd>TextCaseOpenTelescope<cr>", desc = "Text Transform" },
+    ["<leader>to"] = { "<esc><cmd>lua require('neotest').output_panel.open()<cr>", desc = "Open Neotest Panel" },
+    ["<leader>tc"] = { "<esc><cmd>lua require('neotest').output_panel.close()<cr>", desc = "Close Neotest Panel" },
+    ["<leader>te"] = { "<esc><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "PhpUnit File" },
+    ["<leader>tm"] = { "<esc><cmd>lua require('neotest').run.run()<cr>", desc = "PhpUnit Method" },
   },
   t = {
     -- setting a mapping to false will disable it

@@ -6,6 +6,9 @@ return {
       "nvim-neotest/neotest-jest",
       -- "nvim-neotest/neotest-phpunit",
       "olimorris/neotest-phpunit",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
       {
         "folke/neodev.nvim",
         opts = function(_, opts)
@@ -22,7 +25,10 @@ return {
         -- your neotest config here
         adapters = {
           require "neotest-jest",
-          require "neotest-phpunit",
+          require "neotest-phpunit" {
+            root_files = { "composer.json", "phpunit.xml" },
+            filter_dirs = { "vendor", "var", "cache" },
+          },
         },
       }
     end,
