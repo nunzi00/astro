@@ -5,7 +5,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = false
 configs.intelephense.setup {
   default_config = {
     enabled = false,
-    -- cmd = { "intelephense", "--stdio" },
+    cmd = { "intelephense", "--stdio" },
     filetypes = { "php" },
     root_dir = function(fname) return vim.loop.cwd() end,
     settings = {
