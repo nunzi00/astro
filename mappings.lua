@@ -47,26 +47,19 @@ return {
       desc = "Comment",
     },
     ["<leader>te"] = {
-
       function()
         local file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
         local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit %s'", file)
-        vim.notify(command)
+        -- vim.notify(command)
         vim.cmd(command)
       end,
       desc = "PhpUnit",
     },
     ["<leader>ta"] = {
-
-      function()
-        local file = vim.fn.expand "%"
-        local command = string.format("!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit'", file)
-        vim.vim.cmd(command)
-      end,
+      function() vim.cmd "!docker exec gf_back sh -c 'APP_ENV=test php vendor/bin/phpunit'" end,
       desc = "All test PhpUnit",
     },
     ["<leader>ps"] = {
-
       function()
         local file = vim.fn.expand "%"
         local command = string.format("!docker exec gf_back sh -c 'php vendor/bin/psalm -c psalm-local.xml %s'", file)
@@ -90,13 +83,7 @@ return {
 
       desc = "LSP Code Actions",
     },
-    ["gr"] = {
-      function()
-        require("telescope.builtin").lsp_references { file_ignore_patterns = { "%Test.php", "%DebugContainer.php" } }
-      end,
-      desc = "LSP References",
-    },
-    ["tt"] = { "<cmd>TextCaseOpenTelescope<cr>", desc = "text transform" },
+    ["<leader>tr"] = { "<cmd>TextCaseOpenTelescope<cr>", desc = "Text Transform" },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -107,5 +94,6 @@ return {
       "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
       desc = "Toggle comment line",
     },
+    ["<leader>tr"] = { "<cmd>TextCaseOpenTelescope<cr>", desc = "Text Transform" },
   },
 }
