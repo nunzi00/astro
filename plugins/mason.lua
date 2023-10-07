@@ -26,7 +26,17 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "luacheck", "phpcs", "ts-standard", "prettierd", "stylua", "phpcbf", "shfmt", "ts-standard" },
-      ensure_installed = { "luacheck", "ts-standard", "prettierd", "stylua", "shfmt", "ts-standard", "php-cs-fixer"},
+      ensure_installed = {
+        "luacheck",
+        "ts-standard",
+        "prettierd",
+        "stylua",
+        "shfmt",
+        "ts-standard",
+        "php-cs-fixer",
+        "shellcheck",
+        "hadolint",
+      },
     },
   },
   {
