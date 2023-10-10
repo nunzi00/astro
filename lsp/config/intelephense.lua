@@ -47,6 +47,7 @@ configs.intelephense.setup {
             "/home/lucas/getlife/backend/apps/Broker/var/**",
             "/home/lucas/getlife/backend/apps/Customer/var/**",
           },
+          phpVersion = "8.1",
         },
         stubs = {
           "apache",
@@ -121,10 +122,12 @@ configs.intelephense.setup {
           "zip",
           "zlib",
           "phpunit",
+          "redis",
         },
         diagnostics = {
           enable = true,
         },
+        completion = {},
       },
       phpactor = {
         enabled = true,
