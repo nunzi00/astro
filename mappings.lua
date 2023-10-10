@@ -88,6 +88,8 @@ return {
     ["<leader>tc"] = { "<esc><cmd>lua require('neotest').output_panel.close()<cr>", desc = "Close Neotest Panel" },
     ["<leader>te"] = { "<esc><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "PhpUnit File" },
     ["<leader>tm"] = { "<esc><cmd>lua require('neotest').run.run()<cr>", desc = "PhpUnit Method" },
+    ["C-l"] = { "<cmd>:noh<cr>", desc = "Clear matches" },
+    ["C-s"] = { "<cmd>:update<cr>", desc = "save" },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -99,5 +101,6 @@ return {
       desc = "Toggle comment line",
     },
     ["<leader>tr"] = { "<cmd>TextCaseOpenTelescope<cr>", desc = "Text Transform" },
+    ["C-s"] = { "<cmd>:update<cr>", desc = "save" },
   },
 }

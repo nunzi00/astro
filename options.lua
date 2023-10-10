@@ -4,6 +4,11 @@ return {
     colorcolumn = { "120" },
     relativenumber = false,
     wrap = true,
+    cmdheight = 2,
+    clipboard = "unnamedplus",
+    fileencoding = "utf-8",
+    undofile = true,
+    writebackup = false,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
